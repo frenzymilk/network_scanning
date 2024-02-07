@@ -48,6 +48,7 @@ if 1<=int(port_range[0])<=65535 and 1<=int(port_range[1])<=65535 and int(port_ra
     pass # valid port range
 else:
     print("Please provide a valid port number or valid port range")
+    exit()
 
 
 
