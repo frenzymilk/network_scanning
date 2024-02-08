@@ -13,7 +13,7 @@ parser.add_argument(
     "-p",
     "--port_range",
     required=True,
-    help="Provide the port range to scan: e.g. 1-5, 1-1"
+    help="Provide the port range to scan: e.g. 1-5, 1-1 for only one port"
     )
 # ip
 parser.add_argument(
@@ -28,7 +28,10 @@ port_range = args.port_range
 ip = args.ip_address
 
 def port_scanning(ip, ports):
-    port_range = range(int(ports[0]), int(ports[1]))
+    if ports[0] == ports[1]:
+        port_range = [int(ports[0])] 
+    else:
+        port_range = range(int(ports[0]), int(ports[1])+1)
     print(f"Scanning ip {ip}, port range {str(port_range)}")
     for p in port_range:
         s = socket(AF_INET, SOCK_STREAM)
